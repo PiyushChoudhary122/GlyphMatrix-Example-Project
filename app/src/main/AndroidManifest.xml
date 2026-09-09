@@ -6,6 +6,23 @@
     <uses-permission android:name="com.nothing.ketchum.permission.ENABLE" />
 
     <application
+<service
+    android:name=".DragonToyService"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.nothing.glyph.toy" />
+    </intent-filter>
+    
+    <meta-data
+        android:name="GlyphToy"
+        android:value="true" />
+        
+    <!-- NEW: Tell the OS to send long-press events to this toy -->
+    <meta-data
+        android:name="com.nothing.glyph.toy.longpress" 
+        android:value="1" />
+</service>
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
