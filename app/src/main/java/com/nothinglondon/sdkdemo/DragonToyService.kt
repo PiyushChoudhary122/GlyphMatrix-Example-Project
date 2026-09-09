@@ -56,7 +56,8 @@ class DragonToyService : Service() {
         mGM = GlyphMatrixManager.getInstance(applicationContext)
         mGM?.init(object : GlyphMatrixManager.Callback {
             override fun onServiceConnected(componentName: ComponentName) {
-                mGM?.register(23112)
+                // FIXED: Passed as a String in quotes
+                mGM?.register("23112")
                 showIdleFrame()
             }
             override fun onServiceDisconnected(componentName: ComponentName) {}
@@ -68,7 +69,9 @@ class DragonToyService : Service() {
         val bitmap = createBitmapFromAscii(FRAME_IDLE)
         val obj = GlyphMatrixObject.Builder().setImageSource(bitmap).build()
         val frame = GlyphMatrixFrame.Builder().addTop(obj).build(applicationContext)
-        mGM?.setAppMatrixFrame(frame)
+        
+        // FIXED: Toy-specific hardware rendering method
+        mGM?.setMatrixFrame(frame.render())
     }
 
     private fun startFireAnimation() {
@@ -86,7 +89,9 @@ class DragonToyService : Service() {
             val obj = GlyphMatrixObject.Builder().setImageSource(bitmap).build()
             val frame = GlyphMatrixFrame.Builder().addTop(obj).build(applicationContext)
             
-            mGM?.setAppMatrixFrame(frame)
+            // FIXED: Toy-specific hardware rendering method
+            mGM?.setMatrixFrame(frame.render())
+            
             fireFrameIndex++
             
             if (fireFrameIndex < fireSequence.size) {
