@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <application
         android:allowBackup="true"
         android:label="Dragon Toy"
         android:supportsRtl="true">
 
+        <!-- This block adds the app icon to your phone -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".DragonToyService"
             android:exported="true">
-            
             <intent-filter>
                 <action android:name="com.nothing.glyph.toy" />
             </intent-filter>
-            
-            <meta-data
-                android:name="GlyphToy"
-                android:value="true" />
-                
-            <meta-data
-                android:name="com.nothing.glyph.toy.longpress" 
-                android:value="1" />
+            <meta-data android:name="GlyphToy" android:value="true" />
+            <meta-data android:name="com.nothing.glyph.toy.longpress" android:value="1" />
         </service>
-
     </application>
-
 </manifest>
