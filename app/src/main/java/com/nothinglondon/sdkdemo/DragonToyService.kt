@@ -1,4 +1,4 @@
-package com.nothing.glyphmatrix.example
+package com.nothinglondon.sdkdemo
 
 import android.app.Service
 import android.content.ComponentName
