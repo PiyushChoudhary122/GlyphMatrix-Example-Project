@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://android.com"
-    package="pac.nothinglondon.sdkdemo">
+<manifest xmlns:android="http://android.com">
 
     <!-- Mandatory authorization permission to read/write matrix frames -->
     <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
