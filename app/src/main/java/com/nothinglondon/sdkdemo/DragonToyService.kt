@@ -15,6 +15,29 @@ import com.nothing.ketchum.GlyphMatrixObject
 import com.nothing.ketchum.GlyphMatrixFrame
 import com.nothing.ketchum.GlyphToy
 
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Toast
+
+class MainActivity : Activity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Wake up and run the background service daemon to force system registration
+        try {
+            val serviceIntent = Intent(this, DragonToyService::class.java)
+            startService(serviceIntent)
+            Toast.makeText(this, "Dragon Toy Active & Registered!", Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        // Close the launcher interface out automatically to direct users straight back to settings
+        finish()
+    }
+}
 class DragonToyService : Service() {
 
     private var mGM: GlyphMatrixManager? = null
