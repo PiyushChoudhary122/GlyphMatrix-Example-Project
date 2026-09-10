@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. MANDATORY PERMISSION ADDED -->
+    <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
+
     <application
         android:allowBackup="true"
         android:label="Dragon Toy"
         android:supportsRtl="true">
 
-        <!-- This block adds the app icon to your phone -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -19,10 +22,22 @@
             android:name=".DragonToyService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.nothing.glyph.toy" />
+                <!-- 2. CHANGED TO CAPITAL 'TOY' -->
+                <action android:name="com.nothing.glyph.TOY" />
             </intent-filter>
-            <meta-data android:name="GlyphToy" android:value="true" />
+
+            <!-- 3. COMPLIANT METADATA KEYS REPLACED -->
+            <meta-data 
+                android:name="com.nothing.glyph.toy.name" 
+                android:resource="@string/toy_name" /> <!-- Define your "Dragon Toy" string in strings.xml -->
+            
+            <meta-data 
+                android:name="com.nothing.glyph.toy.image" 
+                android:resource="@drawable/dragon_preview" /> <!-- Place a preview image in your drawable folder -->
+
+            <!-- Optional behaviors -->
             <meta-data android:name="com.nothing.glyph.toy.longpress" android:value="1" />
+            <meta-data android:name="com.nothing.glyph.toy.aod_support" android:value="1" />
         </service>
     </application>
 </manifest>
