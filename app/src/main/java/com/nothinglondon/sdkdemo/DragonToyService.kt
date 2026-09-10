@@ -25,7 +25,6 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Wake up and run the background service daemon to force system registration
         try {
             val serviceIntent = Intent(this, DragonToyService::class.java)
             startService(serviceIntent)
@@ -34,7 +33,6 @@ class MainActivity : Activity() {
             e.printStackTrace()
         }
 
-        // Close the launcher interface out automatically to direct users straight back to settings
         finish()
     }
 }
