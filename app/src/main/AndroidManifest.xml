@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://android.com"
+    package="pac.nothinglondon.sdkdemo">
 
-    <!-- 1. MANDATORY PERMISSION ADDED -->
+    <!-- Mandatory authorization permission to read/write matrix frames -->
     <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
 
     <application
         android:allowBackup="true"
         android:label="Dragon Toy"
         android:supportsRtl="true">
+
+        <!-- Mandatory SDK licensing metadata to permit service parsing -->
+        <meta-data android:name="NothingKey" android:value="test" />
 
         <activity
             android:name=".MainActivity"
@@ -22,20 +26,20 @@
             android:name=".DragonToyService"
             android:exported="true">
             <intent-filter>
-                <!-- 2. CHANGED TO CAPITAL 'TOY' -->
+                <!-- Uppercase TOY action matches system framework hooks -->
                 <action android:name="com.nothing.glyph.TOY" />
             </intent-filter>
-<!-- Temporary quick-fix instead of custom resources -->
-<meta-data 
-    android:name="com.nothing.glyph.toy.name" 
-    android:value="Dragon Toy" /> <!-- Hardcoded text directly -->
 
-<meta-data 
-    android:name="com.nothing.glyph.toy.image" 
-    android:resource="@mipmap/ic_launcher" /> <!-- Uses your default app icon -->
- <!-- Place a preview image in your drawable folder -->
+            <!-- Metadata mapping using hardcoded assets to circumvent link dependencies -->
+            <meta-data 
+                android:name="com.nothing.glyph.toy.name" 
+                android:value="Dragon Toy" /> 
+            
+            <meta-data 
+                android:name="com.nothing.glyph.toy.image" 
+                android:resource="@mipmap/ic_launcher" />
 
-            <!-- Optional behaviors -->
+            <!-- Integration hooks for action behaviors and AOD screen parsing -->
             <meta-data android:name="com.nothing.glyph.toy.longpress" android:value="1" />
             <meta-data android:name="com.nothing.glyph.toy.aod_support" android:value="1" />
         </service>
